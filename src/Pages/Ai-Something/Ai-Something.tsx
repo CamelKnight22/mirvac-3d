@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber"
-import { OrbitControls, Environment } from "@react-three/drei"
+import { Environment } from "@react-three/drei"
 import { Suspense } from "react"
 import AisomethingNavbar from "../../Components/Navbar/Aisomething-Navbar";
 import BackhomeNavbar from "../../Components/Navbar/Backhome-Navbar";
@@ -8,14 +8,15 @@ import { Building1 } from "../../gltfjsx/Building 1";
 import { Building2 } from "../../gltfjsx/Building 2";
 import { Building3 } from "../../gltfjsx/Building 3";
 import { Tree } from "../../gltfjsx/Tree 1";
+import { AiModel } from "../../gltfjsx/Ai";
 const Aisomething = () => {
     return(
       <div className='w-screen h-screen bg-gradient-to-r from-sky-300 to-blue-400'>
-      <Canvas shadows dpr={[1, 2]} camera={{ fov: 50, position: [-20, 12, 25] }}>
+      <Canvas shadows dpr={[1, 2]} camera={{ fov: 50, position: [5, 2, -18] }}>
        <Suspense fallback={null}>
        <Environment preset="city" />
          <spotLight position={[-10, 10, -10]} angle={Math.PI / 1} intensity={2} />
-   
+            <AiModel position={[4,0.5,-15]} scale={0.7} rotation={[0,Math.PI / 1, 0]}/>
              <Blandscape position={[0,-1,0]}/>
              <Building1 position={[-16.7,0.38,-10]} rotation={[0, Math.PI/2, 0]} scale={0.14}/>
              <Building1 position={[-16,0.4,10]} rotation={[0, Math.PI/2, 0]} scale={0.11}/>
@@ -57,8 +58,10 @@ const Aisomething = () => {
    
              <Tree position={[5,0.49,-20]} rotation={[0, -Math.PI/1, 0]} scale={0.9}/>
              <Tree position={[-9,0.49,-22]} rotation={[0, -Math.PI/3, 0]} scale={0.9}/>
+            
+
          </Suspense>
-      <OrbitControls  autoRotate autoRotateSpeed={1.2} enableZoom={false} enablePan={false}  maxPolarAngle={Math.PI/2.6} />
+     
        </Canvas>
     <AisomethingNavbar/>
     <BackhomeNavbar/>
